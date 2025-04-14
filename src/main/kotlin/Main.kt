@@ -1,8 +1,10 @@
 import java.net.Inet4Address
 import java.net.NetworkInterface
+import java.net.URL
 
 fun main() {
     println(get_IP())
+    println("public ip : ${get_public_IP()}")
 }
 
 fun get_IP(): String?{
@@ -15,9 +17,17 @@ fun get_IP(): String?{
     } catch (e: Exception) {
         e.printStackTrace()
         null
-    }.also { ip ->
-        println("IP Address: $ip") // Side effect using `also`
     }
+}
 
+
+fun get_public_IP(): String?{
+    return try {
+        URL("https://api.ipify.org").readText()
+    } catch (e: Exception) {
+        null
+    }.run {
+        this?.takeIf { it.isNotEmpty() }
+    }
 }
 
