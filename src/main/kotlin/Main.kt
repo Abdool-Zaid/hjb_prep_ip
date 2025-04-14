@@ -1,7 +1,12 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+fun main() {
+    println(get_IP())
+}
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun get_IP(): String{
+    val res = "ip not found"
+
+
+
+  return  res
+
 }
